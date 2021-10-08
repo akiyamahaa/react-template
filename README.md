@@ -42,4 +42,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### `yarn install` 
 Installing all dependencies in project from package.json
 
+# How to set up Firebase for Project
+- B1: Register an account https://console.firebase.google.com/
+- B2: Add new Project
+- B3: Choose Platform for firebase
+- B4: Create file config like utils/firebase.ts
+
 
