@@ -1,33 +1,39 @@
 import React from 'react';
-import { Button } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  decrementCounting,
-  incrementCounting,
-} from 'redux/actions/counting.actions';
-import { ICountingState } from 'redux/reducers/counting.reducers';
+import { Container, Box, ButtonGroup, Button } from '@mui/material';
+import SvgIcon from '@mui/material/SvgIcon';
+import { useNavigate } from 'react-router-dom';
+import { ABOUT_PATH } from 'navigation/CONSTANT';
 
+function HomeIcon(props: any) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
 interface Props {}
 
 const HomePage = (props: Props) => {
-  const CountingState: any = useSelector<ICountingState>(
-    (state) => state.counting
-  );
-  const dispatch = useDispatch();
-
-  const increment = () => {
-    dispatch(incrementCounting(20));
-  };
-  const decrement = () => {
-    dispatch(decrementCounting(10));
-  };
-
+  const navigate = useNavigate();
   return (
-    <div style={{}}>
-      <h1>This is Home Page</h1>
-      <Button onClick={increment}>Increment</Button>
-      <h2>{CountingState.counting}</h2>
-      <Button onClick={decrement}>Decrement</Button>
+    <div style={{ marginTop: 100 }}>
+      <Container>
+        <Box className="menu-list" display="flex">
+          <ButtonGroup
+            variant="contained"
+            aria-label="outlined primary button group"
+            disableElevation
+          >
+            <Button className="btn-style">
+              <HomeIcon />
+              Trang chủ
+            </Button>
+            <Button className="btn-style" onClick={() => navigate(ABOUT_PATH)}>
+              Về chúng tôi
+            </Button>
+          </ButtonGroup>
+        </Box>
+      </Container>
     </div>
   );
 };

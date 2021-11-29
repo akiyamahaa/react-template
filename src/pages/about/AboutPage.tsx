@@ -1,4 +1,11 @@
-import { collection, getDocs } from 'firebase/firestore/lite';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore/lite';
 import React, { useEffect, useState } from 'react';
 import { db } from 'utils/firebase';
 
@@ -7,16 +14,42 @@ interface Props {}
 const AboutPage = (props: Props) => {
   const [books, setBooks] = useState<any>([]);
 
-  useEffect(() => {
-    getData();
-  }, []);
+
+  // Get DATA from firebase
   const getData = async () => {
-    const booksCol = collection(db, 'books');
-    const citySnapshot = await getDocs(booksCol);
-    const cityList = citySnapshot.docs.map((doc) => doc.data());
+    const bookCollectionRef = collection(db, 'books');
+    const citySnapshot = await getDocs(bookCollectionRef);
+    const cityList = citySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
     setBooks(cityList);
   };
-  console.log('🚀 ~ file: AboutPage.tsx', books);
+
+  // CREATE DATA from firebase
+  // const createData = async () => {
+  //   await addDoc(bookCollectionRef, {
+  //     name: 'abc',
+  //     image: 'xyz',
+  //     price: 'lmao',
+  //   });
+  // };
+
+  // Update Data from firebase
+  // const updateData = async (id, dataForUpdate) => {
+  //   const dataDoc = doc(db, 'books', id);
+  //   await updateDoc(dataDoc, dataForUpdate);
+  // };
+
+  // Delete Data from firebase
+  // const deleteData = async (id) => {
+  //   const dataDoc = doc(db, 'books', id);
+  //   await deleteDoc(dataDoc);
+  // };
+
+  useEffect(() => {
+    // getData();
+  }, []);
 
   return (
     <div>
@@ -33,6 +66,7 @@ const AboutPage = (props: Props) => {
           <div>Price: {book.price}</div>
         </div>
       ))}
+      {/* <img src={logo} /> */}
     </div>
   );
 };

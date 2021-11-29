@@ -1,2 +1,13 @@
 .App {
 }
+.menu-list {
+  background-color: #055699;
+  width: 100%;
+  border-radius: 10px;
+}
+.btn-style {
+  background-color: #055699 !important;
+  text-transform: capitalize !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+}

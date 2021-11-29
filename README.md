@@ -46,6 +46,6 @@ Installing all dependencies in project from package.json
 - B1: Register an account https://console.firebase.google.com/
 - B2: Add new Project
 - B3: Choose Platform for firebase
-- B4: Create file config like utils/firebase.ts
+- B4: Create file config  like utils/firebase.ts
 
 
