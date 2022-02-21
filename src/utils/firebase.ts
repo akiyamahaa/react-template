@@ -1,15 +1,18 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore/lite';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBS8dpXV0ZYZl1GPu-qRBb4pzrxgR9rwKM',
-  authDomain: 'react-template-firebase-aad4f.firebaseapp.com',
-  projectId: 'react-template-firebase-aad4f',
-  storageBucket: 'react-template-firebase-aad4f.appspot.com',
-  messagingSenderId: '269576808832',
-  appId: '1:269576808832:web:37ce03e4415ffb9804b965',
-  measurementId: 'G-Y2R82C0F1V',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-export const db = getFirestore(firebaseApp);
+const db = getFirestore(firebaseApp);
+export const auth = getAuth(firebaseApp);
+export default db;

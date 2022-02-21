@@ -7,13 +7,12 @@ import {
   deleteDoc,
 } from 'firebase/firestore/lite';
 import React, { useEffect, useState } from 'react';
-import { db } from 'utils/firebase';
+import db from 'utils/firebase';
 
 interface Props {}
 
 const AboutPage = (props: Props) => {
   const [books, setBooks] = useState<any>([]);
-
 
   // Get DATA from firebase
   const getData = async () => {
